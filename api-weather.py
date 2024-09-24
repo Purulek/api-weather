@@ -1,9 +1,11 @@
 import json
 import requests
 import tkinter
+from tkinter import messagebox
 
 
 lat_and_lon =[]
+
 
 try:
     r = requests.get("http://api.openweathermap.org/geo/1.0/direct?q=London&limit=1&appid=key")
@@ -13,7 +15,6 @@ except json.decoder.JSONDecodeError:
     print("wrong URL")
 
 for key in handle1:
-    print("-"*20)
     for value in key:
 
         if type(key[value]) == float:
