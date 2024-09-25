@@ -5,6 +5,7 @@ from tkinter import messagebox
 
 
 lat_and_lon =[]
+temputer = []
 
 
 try:
@@ -14,11 +15,14 @@ try:
 except json.decoder.JSONDecodeError:
     print("wrong URL")
 
-for key in handle1:
-    for value in key:
 
-        if type(key[value]) == float:
-            lat_and_lon.append(key[value])
+
+else:
+    for key in handle1:
+        for value in key:
+
+            if type(key[value]) == float:
+                lat_and_lon.append(key[value])
 
 
 
@@ -31,4 +35,8 @@ except json.decoder.JSONDecodeError:
     print("wrong URL")
 
 else:
-    print(handle2)
+    for key in handle1:
+        for value in key:
+
+            if type(key[value]) == 'temp_min' or type(key[value]) ==  'temp_max':
+                temputer.append(key[value])
