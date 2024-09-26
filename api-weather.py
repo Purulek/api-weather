@@ -40,3 +40,5 @@ else:
 
             if type(key[value]) == 'temp_min' or type(key[value]) ==  'temp_max':
                 temputer.append(key[value])
+
+messagebox.showinfo ("Tempeture", temputer)
