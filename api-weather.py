@@ -1,11 +1,29 @@
 import json
 import requests
-import tkinter
+import tkinter as tk
 from tkinter import messagebox
-
 
 lat_and_lon =[]
 temputer = []
+root = tk.Tk()
+root.title("In wich country you want chek tempeture")
+
+
+def cheking_country():
+    messeg = input_text.get()
+    if not messeg.strip():
+        messagebox.showwarning("error", "pleas give name of country")
+        return
+    return messeg
+
+label =tk.Label(root, text="Wirte name of the country in wich you want chek temeprature:")
+label.pack(padx=10, pady=10)
+input_text = tk.Entry(root, width=40)
+input_text.pack(padx=10, pady=10)
+button = tk.Button(root, text="check tempeture ", command=cheking_country)
+button.pack(padx=10, pady=10)
+root.mainloop()
+
 
 
 try:
