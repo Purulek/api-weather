@@ -2,6 +2,9 @@ import json
 import requests
 import tkinter as tk
 from tkinter import messagebox
+from googletrans import Translator
+
+
 
 
 Key = "XXX"
@@ -71,6 +74,9 @@ else:
             for value in handle2[key]:
                 try:
                     print(handle2[key][value])
+                    if value == "temp":
+                        temputer.append(handle2[key][value])
+                    
                 except:
                     pass
         except:
@@ -79,4 +85,4 @@ else:
         
 
             
-    messagebox.showinfo ("Tempeture", temputer)
+    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° F'.format (messeg, temputer[0]))
