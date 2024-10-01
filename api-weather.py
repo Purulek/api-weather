@@ -69,11 +69,8 @@ else:
 
     for key in handle2:
         try:
-            print(handle2[key])
-
             for value in handle2[key]:
                 try:
-                    print(handle2[key][value])
                     if value == "temp":
                         temputer.append(handle2[key][value])
                     
@@ -85,4 +82,4 @@ else:
         
 
             
-    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° F'.format (messeg, temputer[0]))
+    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C'.format (messeg, temputer[0], round(temputer[0] - 273)))
