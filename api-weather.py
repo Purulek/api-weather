@@ -12,6 +12,7 @@ lat_and_lon =[]
 temputer = []
 root = tk.Tk()
 root.title("In wich country you want chek tempeture")
+weather = []
 
 
 def cheking_country():
@@ -50,7 +51,6 @@ else:
     for key in handle1:
         for value in key:
             
-
             if type(key[value]) == float:
                 lat_and_lon.append(key[value])
 
@@ -66,14 +66,12 @@ except json.decoder.JSONDecodeError:
     print("wrong URL")
 
 else:
-
     for key in handle2:
         try:
             for value in handle2[key]:
                 try:
                     if value == "temp":
-                        temputer.append(handle2[key][value])
-                    
+                        temputer.append(handle2[key][value])     
                 except:
                     pass
         except:
@@ -82,4 +80,4 @@ else:
         
 
             
-    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C'.format (messeg, temputer[0], round(temputer[0] - 273)))
+    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} w'.format (messeg, temputer[0], round(temputer[0] - 273,weather )))
