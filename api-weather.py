@@ -55,8 +55,6 @@ else:
                 lat_and_lon.append(key[value])
 
 
-
-
 try:
     r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}".format(lat_and_lon[0],lat_and_lon[1],Key))
     handle2 = r.json()
@@ -71,13 +69,13 @@ else:
             for value in handle2[key]:
                 try:
                     if value == "temp":
-                        temputer.append(handle2[key][value])     
+                        temputer.append(handle2[key][value])
+
+                    elif  value == 'main':
+                        weather.append(handle2[key][value])    
                 except:
                     pass
         except:
             pass
 
-        
-
-            
     messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} w'.format (messeg, temputer[0], round(temputer[0] - 273,weather )))
