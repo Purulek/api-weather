@@ -7,7 +7,7 @@ from googletrans import Translator
 
 
 
-Key = "XXXX"
+Key = "xxx"
 lat_and_lon =[]
 temputer = []
 root = tk.Tk()
@@ -64,20 +64,29 @@ except json.decoder.JSONDecodeError:
     print("wrong URL")
 
 else:
+    print(handle2)
     for key in handle2:
         try:
+
+            if key == 'weather':
+                print(key[0]['id'])
+            
             for value in handle2[key]:
                 try:
-                    print(handle2[key][value])
-                    if value == "temp":
-                        temputer.append(handle2[key][value])
-
-                    elif  value == 'main':
-                        weather.append(handle2[key][value])
-                        print(weather)    
+                    for info in handle2[key][value]:
+                        print(info, "!"*8)
                 except:
-                    pass
+                    try:
+                        print(handle2[key][value])
+                        if value == "temp":
+                            temputer.append(handle2[key][value])
+
+                        elif  value == 'main':
+                            weather.append(handle2[key][value])
+                            print(weather)    
+                    except:
+                        pass
         except:
             pass
 
-    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is:  w'.format (messeg, temputer[0], round(temputer[0] - 273 )))
+    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is:  '.format (messeg, temputer[0], round(temputer[0] - 273 )))
