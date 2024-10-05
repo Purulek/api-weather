@@ -7,12 +7,11 @@ from googletrans import Translator
 
 
 
-Key = "xxx"
+Key = "xxxf"
 lat_and_lon =[]
-temputer = []
+
 root = tk.Tk()
 root.title("In wich country you want chek tempeture")
-weather = []
 
 
 def cheking_country():
@@ -64,29 +63,24 @@ except json.decoder.JSONDecodeError:
     print("wrong URL")
 
 else:
-    print(handle2)
+
     for key in handle2:
         try:
 
-            if key == 'weather':
-                print(key[0]['id'])
-            
             for value in handle2[key]:
+                if key == 'weather':
+                    for info in handle2[key][0]:
+                        
+                        if info == 'description':
+                            weather =(handle2[key][0][info])
                 try:
-                    for info in handle2[key][value]:
-                        print(info, "!"*8)
-                except:
-                    try:
-                        print(handle2[key][value])
-                        if value == "temp":
-                            temputer.append(handle2[key][value])
 
-                        elif  value == 'main':
-                            weather.append(handle2[key][value])
-                            print(weather)    
-                    except:
-                        pass
+                    if value == "temp":
+                        temputer = (handle2[key][value])
+
+                except:
+                    pass
         except:
             pass
 
-    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is:  '.format (messeg, temputer[0], round(temputer[0] - 273 )))
+    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} '.format (messeg, round(temputer), round(temputer - 273 ), weather))
