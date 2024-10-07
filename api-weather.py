@@ -7,12 +7,17 @@ from googletrans import Translator
 
 
 
+
 Key = "xxxf"
 lat_and_lon =[]
 
 root = tk.Tk()
 root.title("In wich country you want chek tempeture")
 
+with open ("ISO 639-1.json",'r') as file:
+    iso = json.load(file)
+
+    
 
 def cheking_country():
     global messeg
@@ -23,7 +28,13 @@ def cheking_country():
     else:
         root.destroy()
 
-    
+def translate_country_name(name):
+    for country in iso:
+        print(country)
+
+        print("_"*8)
+
+
     
     
 
@@ -36,6 +47,7 @@ button.pack(padx=10, pady=10)
 root.mainloop()
 
 
+translate_country_name(messeg)
 
 try:
     r = requests.get("http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}".format(messeg.capitalize(),Key))
