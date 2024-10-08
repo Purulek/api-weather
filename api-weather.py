@@ -30,9 +30,9 @@ def cheking_country():
 
 def translate_country_name(name):
     for country in iso:
-        print(country)
-
-        print("_"*8)
+        cou = country["English"]
+        if cou == name:
+            pass
 
 
     
