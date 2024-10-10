@@ -32,7 +32,8 @@ def translate_country_name(name):
     for country in iso:
         cou = country["English"]
         if cou == name:
-            return cou 
+            result = Translator.translate(name, src=cou['alpha2'], dest='en')
+            print (result)
 
 
     
