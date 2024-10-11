@@ -31,12 +31,14 @@ def cheking_country():
 def translate_country_name(name):
     for country in iso:
         cou = country["English"]
+        print (cou['alpha2'])
+        print(cou)
+        print(name)
         if cou == name:
+            print (cou['alpha2'])
             result = Translator.translate(name, src=cou['alpha2'], dest='en')
             print (result)
 
-
-    
 
 
 label =tk.Label(root, text="Wirte name of the country in wich you want chek temeprature:")
