@@ -31,7 +31,7 @@ def cheking_country():
 def translate_country_name(name):
     for country in iso:
         cou = country["English"]
-        print (cou['alpha2'])
+        
         print(cou)
         print(name)
         if cou == name:
