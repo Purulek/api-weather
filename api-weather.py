@@ -8,7 +8,7 @@ from googletrans import Translator
 
 
 
-Key = "xxxf"
+Key = "XXX"
 lat_and_lon =[]
 
 root = tk.Tk()
@@ -29,17 +29,16 @@ def cheking_country():
         root.destroy()
 
 def translate_country_name(name):
+    global country_name
     for country in iso:
         cou = country["English"]
-        
-        print(cou)
-        print(name)
+
         if cou == name:
-            print (cou['alpha2'])
-            result = Translator.translate(name, src=cou['alpha2'], dest='en')
-            print (result)
-
-
+            print(cou)
+            translator = Translator()
+            result = translator.translate( text =name, src= 'en', dest=country['alpha2'])
+            country_name = result.text
+            
 
 label =tk.Label(root, text="Wirte name of the country in wich you want chek temeprature:")
 label.pack(padx=10, pady=10)
@@ -53,7 +52,8 @@ root.mainloop()
 translate_country_name(messeg)
 
 try:
-    r = requests.get("http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}".format(messeg.capitalize(),Key))
+
+    r = requests.get("http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}".format(country_name,Key))
     handle1 = r.json()
 
 except json.decoder.JSONDecodeError:
