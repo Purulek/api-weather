@@ -18,7 +18,6 @@ with open ("ISO 639-1.json",'r') as file:
     iso = json.load(file)
 
     
-
 def cheking_country():
     global messeg
     messeg = input_text.get()
@@ -27,6 +26,7 @@ def cheking_country():
         return  
     else:
         root.destroy()
+
 
 def translate_country_name(name):
     global country_name
@@ -39,14 +39,27 @@ def translate_country_name(name):
             result = translator.translate( text =name, src= 'en', dest=country['alpha2'])
             country_name = result.text
             
+def label_weather():
+    global input_text
+    
+    label =tk.Label(root, text="Wirte name of the country in wich you want chek temeprature:")
+    label.pack(padx=10, pady=10)
+    input_text = tk.Entry(root, width=40)
+    input_text.pack(padx=10, pady=10)
+    button = tk.Button(root, text="check tempeture ", command= cheking_country)
+    button.pack(padx=10, pady=10)
+    
+    root.mainloop()
+    
+    
 
-label =tk.Label(root, text="Wirte name of the country in wich you want chek temeprature:")
-label.pack(padx=10, pady=10)
-input_text = tk.Entry(root, width=40)
-input_text.pack(padx=10, pady=10)
-button = tk.Button(root, text="check tempeture ", command=cheking_country)
-button.pack(padx=10, pady=10)
-root.mainloop()
+
+label_weather()
+
+
+        
+
+
 
 
 translate_country_name(messeg)
