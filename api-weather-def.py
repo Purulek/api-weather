@@ -10,9 +10,12 @@ from googletrans import Translator
 
 Key = "XXX"
 lat_and_lon =[]
+link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
+
 
 root = tk.Tk()
 root.title("In wich country you want chek tempeture")
+
 
 with open ("ISO 639-1.json",'r') as file:
     iso = json.load(file)
@@ -51,64 +54,65 @@ def label_weather():
     
     root.mainloop()
     
-    
+
+
+def get_latAndlon (link,country,login):
+    try:
+
+        r = requests.get(link.format(country,login))
+        handle1 = r.json()
+
+    except json.decoder.JSONDecodeError:
+        print("wrong URL")
+
+
+
+    else:
+        for key in handle1:
+            for value in key:
+                
+                if type(key[value]) == float:
+                    lat_and_lon.append(key[value])
+
+
+
+def get_and_showinfo():
+    try:
+        r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}".format(lat_and_lon[0],lat_and_lon[1],Key))
+        handle2 = r.json()
+
+
+    except json.decoder.JSONDecodeError:
+        print("wrong URL")
+
+    else:
+
+        for key in handle2:
+            try:
+
+                for value in handle2[key]:
+                    if key == 'weather':
+                        for info in handle2[key][0]:
+                            
+                            if info == 'description':
+                                weather =(handle2[key][0][info])
+                    try:
+
+                        if value == "temp":
+                            temputer = (handle2[key][value])
+
+                    except:
+                        pass
+            except:
+                pass
+
+        messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} '.format (messeg, round(temputer), round(temputer - 273 ), weather))
+
 
 
 label_weather()
 
-
-        
-
-
-
-
 translate_country_name(messeg)
 
-try:
+get_latAndlon(link_lat,country_name,Key)
 
-    r = requests.get("http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}".format(country_name,Key))
-    handle1 = r.json()
-
-except json.decoder.JSONDecodeError:
-    print("wrong URL")
-
-
-
-else:
-    for key in handle1:
-        for value in key:
-            
-            if type(key[value]) == float:
-                lat_and_lon.append(key[value])
-
-
-try:
-    r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}".format(lat_and_lon[0],lat_and_lon[1],Key))
-    handle2 = r.json()
-
-
-except json.decoder.JSONDecodeError:
-    print("wrong URL")
-
-else:
-
-    for key in handle2:
-        try:
-
-            for value in handle2[key]:
-                if key == 'weather':
-                    for info in handle2[key][0]:
-                        
-                        if info == 'description':
-                            weather =(handle2[key][0][info])
-                try:
-
-                    if value == "temp":
-                        temputer = (handle2[key][value])
-
-                except:
-                    pass
-        except:
-            pass
-
-    messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} '.format (messeg, round(temputer), round(temputer - 273 ), weather))
