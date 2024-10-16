@@ -11,7 +11,7 @@ from googletrans import Translator
 Key = "XXX"
 lat_and_lon =[]
 link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
-
+link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 root = tk.Tk()
 root.title("In wich country you want chek tempeture")
@@ -57,6 +57,7 @@ def label_weather():
 
 
 def get_latAndlon (link,country,login):
+
     try:
 
         r = requests.get(link.format(country,login))
@@ -76,9 +77,9 @@ def get_latAndlon (link,country,login):
 
 
 
-def get_and_showinfo():
+def get_and_showinfo(link,login):
     try:
-        r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}".format(lat_and_lon[0],lat_and_lon[1],Key))
+        r = requests.get(link.format(lat_and_lon[0],lat_and_lon[1],login))
         handle2 = r.json()
 
 
@@ -115,4 +116,6 @@ label_weather()
 translate_country_name(messeg)
 
 get_latAndlon(link_lat,country_name,Key)
+
+get_and_showinfo(link_temp, Key)
 
