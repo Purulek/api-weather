@@ -8,10 +8,13 @@ from googletrans import Translator
 
 
 
-Key = "XXX"
+Key = "XXXX"
 lat_and_lon =[]
 link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
 link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
+
+
+
 
 root = tk.Tk()
 root.title("In wich country you want chek tempeture")
@@ -30,14 +33,12 @@ def cheking_country():
     else:
         root.destroy()
 
-
 def translate_country_name(name):
     global country_name
     for country in iso:
         cou = country["English"]
 
         if cou == name:
-            print(cou)
             translator = Translator()
             result = translator.translate( text =name, src= 'en', dest=country['alpha2'])
             country_name = result.text
