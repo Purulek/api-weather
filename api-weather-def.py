@@ -8,7 +8,7 @@ from googletrans import Translator
 
 
 
-Key = "XXXX"
+Key = "XXX"
 lat_and_lon =[]
 link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
 link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
