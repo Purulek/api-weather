@@ -6,24 +6,22 @@ from googletrans import Translator
 
 
 
-
-
 Key = "XXX"
 lat_and_lon =[]
 link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
 link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 
-
-
 root = tk.Tk()
 root.title("In wich country you want chek tempeture")
-
 
 with open ("ISO 639-1.json",'r') as file:
     iso = json.load(file)
 
-    
+
+
+
+
 def cheking_country():
     global messeg
     messeg = input_text.get()
