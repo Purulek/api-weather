@@ -20,8 +20,6 @@ with open ("ISO 639-1.json",'r') as file:
 
 
 
-
-
 def cheking_country():
     global messeg
     messeg = input_text.get()
