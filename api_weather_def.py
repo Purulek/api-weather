@@ -108,11 +108,5 @@ def get_and_showinfo(link,login):
 
 
 
-label_weather()
 
-translate_country_name(messeg)
-
-get_latAndlon(link_lat,country_name,Key)
-
-get_and_showinfo(link_temp, Key)
 
