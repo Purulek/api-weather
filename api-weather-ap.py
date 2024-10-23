@@ -6,7 +6,6 @@ link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
 link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 
-
 wh.label_weather()
 
 wh.translate_country_name(messeg)
