@@ -103,7 +103,6 @@ def get_and_showinfo(link,login):
                         pass
             except:
                 pass
-
         messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} '.format (messeg, round(temputer), round(temputer - 273 ), weather))
 
 
