@@ -19,7 +19,6 @@ with open ("ISO 639-1.json",'r') as file:
     iso = json.load(file)
 
 
-
 def cheking_country():
     global messeg
     messeg = input_text.get()
@@ -67,8 +66,9 @@ def get_latAndlon (link,country,login):
 
     else:
         for key in handle1:
+            print (handle1)
             for value in key:
-                
+                print (key[value])
                 if type(key[value]) == float:
                     lat_and_lon.append(key[value])
 
