@@ -50,8 +50,6 @@ def label_weather():
     
     root.mainloop()
     
-
-
 def get_latAndlon (link,country,login):
 
     try:

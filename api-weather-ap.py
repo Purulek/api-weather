@@ -14,3 +14,7 @@ wh.translate_country_name(messeg)
 wh.get_latAndlon(link_lat,country_name,Key)
 
 wh.get_and_showinfo(link_temp, Key)
+
+
+
+
