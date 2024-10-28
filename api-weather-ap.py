@@ -7,9 +7,9 @@ link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid
 messeg = ""
 country_name = ""
 
-wh.label_weather()
+input_text = wh.label_weather()
 
-wh.translate_country_name(messeg)
+country_name = wh.translate_country_name(messeg)
 
 wh.get_latAndlon(link_lat,country_name,Key)
 

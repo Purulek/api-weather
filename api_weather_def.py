@@ -24,7 +24,6 @@ def cheking_country():
     messeg = input_text.get()
     if not messeg.strip():
         messagebox.showwarning("error", "pleas give name of country")
-        return  
     else:
         root.destroy()
 
@@ -37,6 +36,7 @@ def translate_country_name(name):
             translator = Translator()
             result = translator.translate( text =name, src= 'en', dest=country['alpha2'])
             country_name = result.text
+            return country_name
             
 def label_weather():
     global input_text
@@ -49,7 +49,7 @@ def label_weather():
     button.pack(padx=10, pady=10)
     
     root.mainloop()
-    
+    return input_text
 def get_latAndlon (link,country,login):
 
     try:
