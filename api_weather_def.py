@@ -20,7 +20,6 @@ with open ("ISO 639-1.json",'r') as file:
 
 
 def cheking_country():
-    global messeg
     messeg = input_text.get()
     if not messeg.strip():
         messagebox.showwarning("error", "pleas give name of country")
@@ -72,7 +71,7 @@ def get_latAndlon (link,country,login):
 
 
 
-def get_and_showinfo(link,login):
+def get_and_showinfo(link,login,messege):
     try:
         r = requests.get(link.format(lat_and_lon[0],lat_and_lon[1],login))
         handle2 = r.json()
@@ -101,7 +100,7 @@ def get_and_showinfo(link,login):
                         pass
             except:
                 pass
-        messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} '.format (messeg, round(temputer), round(temputer - 273 ), weather))
+        messagebox.showinfo ("Tempeture",'in {} temperature is: {} ° K / {} ° C \n weather is: {} '.format (messege, round(temputer), round(temputer - 273 ), weather))
 
 
 
