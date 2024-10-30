@@ -34,6 +34,7 @@ def translate_country_name(name):
         if cou == name:
             translator = Translator()
             result = translator.translate( text =name, src= 'en', dest=country['alpha2'])
+            print(result)
             country_name = result.text
             return country_name
             
@@ -63,7 +64,7 @@ def get_latAndlon (link,country,login):
 
     else:
         for key in handle1:
-            print (handle1)
+
             for value in key:
                 print (key[value])
                 if type(key[value]) == float:
