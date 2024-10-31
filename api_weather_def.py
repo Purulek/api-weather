@@ -1,9 +1,7 @@
 import json
 import requests
-import tkinter as tk
 from tkinter import messagebox
 from googletrans import Translator
-
 
 
 Key = "XXX"
@@ -12,21 +10,18 @@ link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
 link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 
-root = tk.Tk()
-root.title("In wich country you want chek tempeture")
 
 with open ("ISO 639-1.json",'r') as file:
     iso = json.load(file)
 
 
-def cheking_country():
-    messeg = input_text.get()
-    if not messeg.strip():
-        messagebox.showwarning("error", "pleas give name of country")
-    else:
-        root.destroy()
 
-def translate_country_name(name):
+
+
+    
+
+
+def translate_country_name(name,):
     global country_name
     for country in iso:
         cou = country["English"]
@@ -36,20 +31,11 @@ def translate_country_name(name):
             result = translator.translate( text =name, src= 'en', dest=country['alpha2'])
             print(result)
             country_name = result.text
+            print (country_name)
             return country_name
             
-def label_weather():
-    global input_text
-    
-    label =tk.Label(root, text="Wirte name of the country in wich you want chek temeprature:")
-    label.pack(padx=10, pady=10)
-    input_text = tk.Entry(root, width=40)
-    input_text.pack(padx=10, pady=10)
-    button = tk.Button(root, text="check tempeture ", command= cheking_country)
-    button.pack(padx=10, pady=10)
-    
-    root.mainloop()
-    return input_text
+
+
 def get_latAndlon (link,country,login):
 
     try:
@@ -61,14 +47,14 @@ def get_latAndlon (link,country,login):
         print("wrong URL")
 
 
-
     else:
         for key in handle1:
 
             for value in key:
-                print (key[value])
+ 
                 if type(key[value]) == float:
                     lat_and_lon.append(key[value])
+        return lat_and_lon
 
 
 
