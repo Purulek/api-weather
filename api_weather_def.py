@@ -4,23 +4,14 @@ from tkinter import messagebox
 from googletrans import Translator
 
 
-Key = "XXX"
 lat_and_lon =[]
-link_lat = "http://api.openweathermap.org/geo/1.0/direct?q={}&limit=1&appid={}"
-link_temp = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 
 
 with open ("ISO 639-1.json",'r') as file:
     iso = json.load(file)
 
-
-
-
-
-    
-
-
+# Function wich translate country name in enaglish to natvie
 def translate_country_name(name,):
     global country_name
     for country in iso:
@@ -35,7 +26,7 @@ def translate_country_name(name,):
             return country_name
             
 
-
+# Function wich get cords of the country 
 def get_latAndlon (link,country,login):
 
     try:
@@ -57,7 +48,7 @@ def get_latAndlon (link,country,login):
         return lat_and_lon
 
 
-
+# Function wich chcecking the weateher in country
 def get_and_showinfo(link,login,messege):
     try:
         r = requests.get(link.format(lat_and_lon[0],lat_and_lon[1],login))

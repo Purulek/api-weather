@@ -33,8 +33,6 @@ def label_weather():
 
 label_weather()
 
-
-
 country_name = wh.translate_country_name(messeg)
 
 lat_and_lon = wh.get_latAndlon(link_lat,country_name,Key)
